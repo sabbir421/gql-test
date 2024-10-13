@@ -14,11 +14,11 @@ const typeDefs = gql`
     _id: ID!
     name: String!
     description: String
-    trigger: ID
+    trigger: [Trigger]
     preActions: JSON
-    responses: [ID]
+    responses: [Response]
     postActions: JSON
-    actions: JSON
+    actions: [Action]  # Updated actions field
     compositeId: ID
     global: Boolean
     redirect: JSON
@@ -29,9 +29,31 @@ const typeDefs = gql`
     saveCompositeId: Boolean
     createdAt: Long!
     updatedAt: Long
-    parents: [ID]
+    parents: [NodeObject]
     root: Boolean
     position: Position
+  }
+
+  type Action {
+    _id: ID!  # Updated to use _id
+    name: String
+    description: String
+    nodeId: ID  # Assuming each action is associated with a nodeId
+    createdAt: Long
+  }
+
+  type Response {
+    _id: ID!
+    name: String
+    description: String
+    platforms: JSON
+    tags: [String]
+    createdAt: Long
+  }
+
+  type Trigger {
+    _id: ID!
+    # Add other relevant fields for Trigger here
   }
 
   type Query {

@@ -1,34 +1,70 @@
-const { GraphQLScalarType, Kind } = require('graphql');
-const fs = require('fs');
-const path = require('path');
+const { GraphQLScalarType, Kind } = require("graphql");
+const fs = require("fs");
+const path = require("path");
 
-// Sample data
-const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../nodes.json')));
+const nodes = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "../data/nodes.json"))
+);
+const actions = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "../data/action.json"))
+);
+const responses = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "../data/response.json"))
+);
+const triggers = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "../data/trigger.json"))
+);
 
 const resolvers = {
   Long: new GraphQLScalarType({
-    name: 'Long',
-    description: 'Long integer type to handle timestamps or large integer values',
+    name: "Long",
+    description:
+      "Long integer type to handle timestamps or large integer values",
     serialize(value) {
-      // Serialize the value to be returned by the GraphQL API
       return parseInt(value);
     },
     parseValue(value) {
-      // Parse incoming values from queries
       return parseInt(value);
     },
     parseLiteral(ast) {
       if (ast.kind === Kind.INT) {
-        // Parse literal values (hardcoded in queries)
         return parseInt(ast.value);
       }
       return null;
-    }
+    },
   }),
-  
+
   Query: {
     node: (parent, { nodeId }) => {
-      return data.find(node => node._id === nodeId) || null;
+      return nodes.find((node) => node._id === nodeId) || null;
+    },
+  },
+
+  NodeObject: {
+    parents: (node) => {
+      if (!node.parents.length) {
+        return [];
+      }
+      return node?.parents?.map((compositId) =>
+        nodes.find((node) => node.compositeId === compositId)
+      );
+    },
+    actions: (node) => {
+      if (node.actions && Array.isArray(node.actions)) {
+        return actions.filter((action) => node.actions.includes(action._id));
+      }
+      return null;
+    },
+    responses: (node) => {
+      return responses.filter((response) =>
+        node.responses.includes(response._id)
+      );
+    },
+    trigger: (node) => {
+      if (node.trigger && Array.isArray(node.trigger)) {
+        return triggers.filter((trigger) => node.trigger.includes(trigger._id));
+      }
+      return null;
     },
   },
 };

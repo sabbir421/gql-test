@@ -1,21 +1,15 @@
 const jwt = require("jsonwebtoken");
-const errorResponseHandler = require("./errorResponseHandler");
 const { variables } = require("../config/variables");
 
-const authenticate = async (req, res, next) => {
+const authenticate = async (req) => {
   try {
-    console.log(req.headers.authorization);
-
     const authHeader = req.headers.authorization;
     if (!authHeader) {
-      console.log("================");
-
       throw {
         status: 401,
         message: "Unauthorized access",
       };
     }
-
     const token = authHeader.split(" ")[1];
     if (!token) {
       throw {
@@ -23,7 +17,6 @@ const authenticate = async (req, res, next) => {
         message: "Unauthorized access",
       };
     }
-
     const userData = jwt.verify(token, variables.jwtSecret);
     if (!userData.id) {
       throw {
@@ -31,14 +24,9 @@ const authenticate = async (req, res, next) => {
         message: "Unauthorized access",
       };
     }
-
-    req.headers.id = userData.id;
-    req.headers.role = userData.role;
-    req.headers.email = userData.email;
-    req.headers.mobile = userData.mobile;
-    await next();
+    return userData || {};
   } catch (error) {
-    errorResponseHandler(res, error);
+    console.error(error);
   }
 };
 

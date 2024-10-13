@@ -1,8 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { varivales } = require("../config/variables");
-exports.genarateToken = async (req, res) => {
+const genarateToken = async (req, res) => {
   try {
-    console.log(varivales.jwtSecret);
     const user = { id: "1234" };
     const token = jwt.sign(user, varivales.jwtSecret, { expiresIn: "24h" });
     console.log(token);
@@ -11,3 +10,4 @@ exports.genarateToken = async (req, res) => {
     console.log(error);
   }
 };
+genarateToken();
