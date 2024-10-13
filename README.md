@@ -1,7 +1,8 @@
-Project clone : git clone https://github.com/your-repo/your-project.git
-Project install : npm install
+# Project clone : git clone https://github.com/your-repo/your-project.git
 
-Project Structure:
+# Project install : npm install
+
+# Project Structure:
 .
 ├── data
 │   ├── action.json      
@@ -14,10 +15,10 @@ Project Structure:
 |    └── schema.graphql    
 └── index.js
 
-Project Start : npm run dev
-Token Genarate : npm run token
+# Project Start : npm run dev
+# Token Genarate : npm run token (Add Bearer token on header Authrozition)
 
-Test Query Example:
+# Test Query Example:
 
 1. query {
   node(nodeId: "62971a9570a0c12bb389cd13") {
