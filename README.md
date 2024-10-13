@@ -2,7 +2,7 @@
 
 * Project install : npm install
 
-* Project Structure:
+# Project Structure:
 .
 ├── data
 │   ├── action.json      
@@ -20,7 +20,7 @@
 
 * Test Query Example:
 
-* 1. query {
+ 1. query {
   node(nodeId: "62971a9570a0c12bb389cd13") {
     _id
     name
@@ -29,7 +29,7 @@
 }
 
 
-* 2. query {
+ 2. query {
   node(nodeId: "62971a9570a0c12bb389cd13") {
     _id
     name
@@ -47,7 +47,7 @@
   }
 }
 
-* 3. query {
+ 3. query {
   node(nodeId: "62971a9570a0c12bb389cd13") {
     _id
     name
