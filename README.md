@@ -2,21 +2,6 @@
 
 * Project install : npm install
 
-Project Structure:
-
-
-├── data
-│   ├── action.json      
-│   ├── nodes.json       
-│   ├── response.json    
-│   └── trigger.json 
-├── resolvers
-│   └── index.js         
-|── schema
-|    └── schema.graphql    
-└── index.js
-
-
 * Project Start : npm run dev
 * Token Genarate : npm run token (Add Bearer token on header Authrozition)
 
