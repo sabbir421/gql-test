@@ -1,6 +1,6 @@
-* Project clone : git clone https://github.com/your-repo/your-project.git
+* Project clone :                   git clone https://github.com/your-repo/your-project.git
 
-* Project install : npm install
+* Project install :                   npm install
 
 * Project Start : npm run dev
 * Token Genarate : npm run token (Add Bearer token on header Authrozition)
@@ -58,8 +58,6 @@
 
 
 NB: you can test by your own query
-
-              # Thank you 
 
 
 
