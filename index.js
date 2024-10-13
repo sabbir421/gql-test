@@ -7,26 +7,33 @@ const typeDefs = require("./typedefs/schema");
 const resolvers = require("./resolver/resolver");
 const authenticate = require("./utils/authenticate");
 
-const startSarver = async () => {
+const startServer = async () => {
   const app = express();
   const server = new ApolloServer({
     typeDefs,
     resolvers,
   });
+
   app.use(bodyParser.json());
   app.use(cors());
+
   await server.start();
+
   app.use(
     "/graphql",
     expressMiddleware(server, {
       context: async ({ req }) => {
-        const user = authenticate(req);
-        return {user};
+        try {
+          const user = await authenticate(req);
+          return { user }; 
+        } catch (error) {
+          throw new Error(error.message || "Unauthorized");
+        }
       },
     })
   );
 
-  app.listen(8000, () => console.log("server start on port 8000"));
+  app.listen(8000, () => console.log("Server started on port 8000"));
 };
 
-startSarver();
+startServer();
