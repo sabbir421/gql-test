@@ -42,7 +42,7 @@ const resolvers = {
 
   NodeObject: {
     parents: (node) => {
-      if (!node.parents.length) {
+      if (!node.parents?.length) {
         return [];
       }
       return node?.parents?.map((compositId) =>
@@ -57,12 +57,12 @@ const resolvers = {
     },
     responses: (node) => {
       return responses.filter((response) =>
-        node.responses.includes(response._id)
+        node.responses?.includes(response._id)
       );
     },
     trigger: (node) => {
-      if (node.trigger && Array.isArray(node.trigger)) {
-        return triggers.filter((trigger) => node.trigger.includes(trigger._id));
+      if (node.trigger) {
+        return triggers.find((trigger) => node.trigger === trigger._id);
       }
       return null;
     },

@@ -64,25 +64,25 @@ const typeDefs = gql`
     updatedAt: Long
   }
 
-type NodeObject {
-  _id: ID!
-  name: String!
-  description: String
-  createdAt: Long!
-  updatedAt: Long
-  parents: [NodeObject]
-  parentIds: [ID]
-  root: Boolean
-  triggerId: ID
-  trigger: [Trigger]
-  responseIds: [ID]
-  actions: [Action]
-  responses: [Response]
-  priority: Float
-  compositeId: ID
-  global: Boolean
-  colour: String
-}
+  type NodeObject {
+    _id: ID!
+    name: String!
+    description: String
+    createdAt: Long!
+    updatedAt: Long
+    parents: [NodeObject]
+    parentIds: [ID]
+    root: Boolean
+    triggerId: ID
+    trigger: Trigger
+    responseIds: [ID]
+    actions: [Action]
+    responses: [Response]
+    priority: Float
+    compositeId: ID
+    global: Boolean
+    colour: String
+  }
 
   type Query {
     node(nodeId: ID!): NodeObject
