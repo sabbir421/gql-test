@@ -4,57 +4,48 @@
 
 * Project Start : npm run dev
 * Token Genarate : npm run token (Add Bearer token on header Authrozition)
+* Token :"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMzQiLCJpYXQiOjE3Mjg5MjQyNjUsImV4cCI6MTczNjcwMDI2NX0.aXQfRSJLFkkdH1PkKI_5CFzNQ2YaMSDua-ZXdaPtFvQ"
+*  .env : JWT_SECRET=your_jwt_secret
+          PORT=8000
+
+GraphQL Playground : http://localhost:8000/graphql
 
 * Test Query Example:
 
- 1. query {
-  node(nodeId: "62971a9570a0c12bb389cd13") {
-    _id
+ query { 
+  node(nodeId: "62971b3470a0c1803c89cd15") 
+    {
+     _id
     name
     description
-  }
-}
-
-
- 2. query {
-  node(nodeId: "62971a9570a0c12bb389cd13") {
-    _id
-    name
-    parents {
-      _id
-      name
-      parents {
-        _id
-        name
-        responses {
-          name
-        }
-      }
-    }
-  }
-}
-
- 3. query {
-  node(nodeId: "62971a9570a0c12bb389cd13") {
-    _id
-    name
-    parents {
-      _id
+    createdAt
+    updatedAt
+    parents{
       name
     }
+    parentIds
+    root
+    triggerId
+    trigger {
+      name
+    }
+    responseIds
     actions {
-      _id
-      description
+      name
     }
     responses {
-      _id
       name
     }
-    trigger {
-      _id
-    }
+    priority
+    compositeId
+    global
+    colour
+      } 
   }
-}
+
+
+
+ 
 
 
 NB: you can test by your own query
