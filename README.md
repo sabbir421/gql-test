@@ -1,25 +1,13 @@
-Project clone : git clone https://github.com/your-repo/your-project.git
-Project install : npm install
+* Project clone :git clone https://github.com/your-repo/your-project.git
 
-Project Structure:
-.
-├── data
-│   ├── action.json      
-│   ├── nodes.json       
-│   ├── response.json    
-│   └── trigger.json 
-├── resolvers
-│   └── index.js         
-|└── schema
-|    └── schema.graphql    
-└── index.js
+* Project install :npm install
 
-Project Start : npm run dev
-Token Genarate : npm run token
+* Project Start : npm run dev
+* Token Genarate : npm run token (Add Bearer token on header Authrozition)
 
-Test Query Example:
+* Test Query Example:
 
-1. query {
+ 1. query {
   node(nodeId: "62971a9570a0c12bb389cd13") {
     _id
     name
@@ -28,7 +16,7 @@ Test Query Example:
 }
 
 
-2. query {
+ 2. query {
   node(nodeId: "62971a9570a0c12bb389cd13") {
     _id
     name
@@ -46,7 +34,7 @@ Test Query Example:
   }
 }
 
-3. query {
+ 3. query {
   node(nodeId: "62971a9570a0c12bb389cd13") {
     _id
     name
@@ -69,7 +57,8 @@ Test Query Example:
 }
 
 
+NB: you can test by your own query
 
-
+Thank you for your time
 
  
