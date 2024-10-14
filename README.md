@@ -1,3 +1,8 @@
+* Prerequisites
+Before you begin, ensure you have the following installed on your machine:
+
+Node.js (v16+)
+npm (v6+)
 * Project clone :git clone https://github.com/your-repo/your-project.git
 
 * Project install :npm install
@@ -12,7 +17,7 @@ GraphQL Playground : http://localhost:8000/graphql
 
 * Test Query Example:
 
- query { 
+1. query { 
   node(nodeId: "62971b3470a0c1803c89cd15") 
     {
      _id
@@ -43,6 +48,42 @@ GraphQL Playground : http://localhost:8000/graphql
       } 
   }
 
+2. query GetNode {
+  node(nodeId: "62971b3470a0c1803c89cd15") {
+    _id
+    name
+    description
+    createdAt
+    parents {
+      _id
+      name
+    }
+    actions {
+      _id
+      name
+      functionString
+    }
+    responses {
+      _id
+      name
+      platforms {
+        integrationId
+        localeGroups {
+          localeGroupId
+          variations {
+            name
+            responses
+          }
+        }
+      }
+    }
+    trigger {
+      _id
+      name
+      functionString
+    }
+  }
+}
 
 
  
