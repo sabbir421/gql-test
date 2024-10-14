@@ -15,10 +15,10 @@ npm (v6+)
 * Data Sources
 All data is currently being served from static JSON files:
 
-nodes.json: Contains NodeObject data.
-action.json: Contains Action data.
-response.json: Contains Response data.
-trigger.json: Contains Trigger data.
+1. nodes.json: Contains NodeObject data.
+2. action.json: Contains Action data.
+3. response.json: Contains Response data.
+4. trigger.json: Contains Trigger data.
 
 GraphQL Playground : http://localhost:8000/graphql
 
